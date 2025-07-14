@@ -61,12 +61,10 @@ app.use(manejadorErrores);
 //   }
  
 // })
-app.get('/',(req,res)=>{
- 
- 
-    res.json('funcionando')
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-})
 
 // app.post('/',(req,res,next)=>{
   
