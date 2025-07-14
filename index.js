@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 require('dotenv').config();
@@ -64,7 +65,11 @@ app.use(manejadorErrores);
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
 
 // app.post('/',(req,res,next)=>{
   
